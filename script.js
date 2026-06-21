@@ -318,7 +318,7 @@ function applyAllFilters() {
 attrButtons.forEach(btn => {
   btn.addEventListener('click', (e) => {
     attrButtons.forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
+    e.target.closest('.attr-btn').classList.add('active');
     applyAllFilters();
   });
 });
