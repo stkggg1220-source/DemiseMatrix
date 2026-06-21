@@ -2,7 +2,7 @@
 "character":[
     {
         "id": "img_001",
-        "url": "https://picsum.photos/150?random=1",
+        "url": "character/character_001.png",
         "name": "淵武",
         "attribute": "電導",
         "rank": "4",
@@ -14,7 +14,7 @@
     },
     {
         "id": "img_002",
-        "url": "https://picsum.photos/150?random=2",
+        "url": "character/character_002.png",
         "name": "丹瑾",
         "attribute": "消滅",
         "rank": "4",
@@ -26,7 +26,7 @@
     },
     {
         "id": "img_003",
-        "url": "https://picsum.photos/150?random=3",
+        "url": "character/character_003.png",
         "name": "散華",
         "attribute": "凝縮",
         "rank": "4",
@@ -38,7 +38,7 @@
     },
     {
         "id": "img_004",
-        "url": "https://picsum.photos/150?random=4",
+        "url": "character/character_004.png",
         "name": "モルトフィー",
         "attribute": "焦熱",
         "rank": "4",
@@ -50,7 +50,7 @@
     },
     {
         "id": "img_005",
-        "url": "https://picsum.photos/150?random=5",
+        "url": "character/character_005.png",
         "name": "桃祈",
         "attribute": "消滅",
         "rank": "4",
@@ -62,7 +62,7 @@
     },
     {
         "id": "img_006",
-        "url": "https://picsum.photos/150?random=6",
+        "url": "character/character_006.png",
         "name": "アールト",
         "attribute": "気動",
         "rank": "4",
@@ -74,7 +74,7 @@
     },
     {
         "id": "img_007",
-        "url": "https://picsum.photos/150?random=7",
+        "url": "character/character_007.png",
         "name": "白芷",
         "attribute": "凝縮",
         "rank": "4",
@@ -86,7 +86,7 @@
     },
     {
         "id": "img_008",
-        "url": "https://picsum.photos/150?random=8",
+        "url": "character/character_008.png",
         "name": "秧秧",
         "attribute": "気動",
         "rank": "4",
@@ -98,7 +98,7 @@
     },
     {
         "id": "img_009",
-        "url": "https://picsum.photos/150?random=9",
+        "url": "character/character_009.png",
         "name": "熾霞",
         "attribute": "焦熱",
         "rank": "4",
@@ -110,7 +110,7 @@
     },
     {
         "id": "img_010",
-        "url": "https://picsum.photos/150?random=10",
+        "url": "character/character_010.png",
         "name": "釉瑚",
         "attribute": "凝縮",
         "rank": "4",
@@ -122,7 +122,7 @@
     },
     {
         "id": "img_011",
-        "url": "https://picsum.photos/150?random=11",
+        "url": "character/character_011.png",
         "name": "灯灯",
         "attribute": "電導",
         "rank": "4",
@@ -134,7 +134,7 @@
     },
     {
         "id": "img_012",
-        "url": "https://picsum.photos/150?random=12",
+        "url": "character/character_012.png",
         "name": "卜霊",
         "attribute": "電導",
         "rank": "4",
@@ -146,7 +146,7 @@
     },
     {
         "id": "img_013",
-        "url": "https://picsum.photos/150?random=13",
+        "url": "character/character_013.png",
         "name": "漂泊者(回折)",
         "attribute": "回折",
         "rank": "5",
@@ -158,7 +158,7 @@
     },
     {
         "id": "img_014",
-        "url": "https://picsum.photos/150?random=14",
+        "url": "character/character_014.png",
         "name": "鑑心",
         "attribute": "気動",
         "rank": "5",
@@ -170,7 +170,7 @@
     },
     {
         "id": "img_015",
-        "url": "https://picsum.photos/150?random=15",
+        "url": "character/character_015.png",
         "name": "凌陽",
         "attribute": "凝縮",
         "rank": "5",
@@ -182,7 +182,7 @@
     },
     {
         "id": "img_016",
-        "url": "https://picsum.photos/150?random=16",
+        "url": "character/character_016.png",
         "name": "カカロ",
         "attribute": "電導",
         "rank": "5",
@@ -194,7 +194,7 @@
     },
     {
         "id": "img_017",
-        "url": "https://picsum.photos/150?random=17",
+        "url": "character/character_017.png",
         "name": "忌炎",
         "attribute": "気動",
         "rank": "5",
@@ -206,7 +206,7 @@
     },
     {
         "id": "img_018",
-        "url": "https://picsum.photos/150?random=18",
+        "url": "character/character_018.png",
         "name": "吟霖",
         "attribute": "電導",
         "rank": "5",
@@ -218,7 +218,7 @@
     },
     {
         "id": "img_019",
-        "url": "https://picsum.photos/150?random=19",
+        "url": "character/character_019.png",
         "name": "ヴェリーナ",
         "attribute": "回折",
         "rank": "5",
@@ -230,7 +230,7 @@
     },
     {
         "id": "img_020",
-        "url": "https://picsum.photos/150?random=20",
+        "url": "character/character_020.png",
         "name": "アンコ",
         "attribute": "焦熱",
         "rank": "5",
@@ -242,7 +242,7 @@
     },
     {
         "id": "img_021",
-        "url": "https://picsum.photos/150?random=21",
+        "url": "character/character_013.png",
         "name": "漂泊者(消滅)",
         "attribute": "消滅",
         "rank": "5",
@@ -254,7 +254,7 @@
     },
     {
         "id": "img_022",
-        "url": "https://picsum.photos/150?random=22",
+        "url": "character/character_022.png",
         "name": "今汐",
         "attribute": "回折",
         "rank": "5",
@@ -266,7 +266,7 @@
     },
     {
         "id": "img_023",
-        "url": "https://picsum.photos/150?random=23",
+        "url": "character/character_023.png",
         "name": "長離",
         "attribute": "焦熱",
         "rank": "5",
@@ -278,7 +278,7 @@
     },
     {
         "id": "img_024",
-        "url": "https://picsum.photos/150?random=24",
+        "url": "character/character_024.png",
         "name": "折枝",
         "attribute": "凝縮",
         "rank": "5",
@@ -290,7 +290,7 @@
     },
     {
         "id": "img_025",
-        "url": "https://picsum.photos/150?random=25",
+        "url": "character/character_025.png",
         "name": "相里要",
         "attribute": "電導",
         "rank": "5",
@@ -302,7 +302,7 @@
     },
     {
         "id": "img_026",
-        "url": "https://picsum.photos/150?random=26",
+        "url": "character/character_026.png",
         "name": "ショアキーパー",
         "attribute": "回折",
         "rank": "5",
@@ -314,7 +314,7 @@
     },
     {
         "id": "img_027",
-        "url": "https://picsum.photos/150?random=27",
+        "url": "character/character_027.png",
         "name": "ツバキ",
         "attribute": "消滅",
         "rank": "5",
@@ -326,7 +326,7 @@
     },
     {
         "id": "img_028",
-        "url": "https://picsum.photos/150?random=28",
+        "url": "character/character_028.png",
         "name": "カルロッタ",
         "attribute": "凝縮",
         "rank": "5",
@@ -338,7 +338,7 @@
     },
     {
         "id": "img_029",
-        "url": "https://picsum.photos/150?random=29",
+        "url": "character/character_029.png",
         "name": "ロココ",
         "attribute": "消滅",
         "rank": "5",
@@ -350,7 +350,7 @@
     },
     {
         "id": "img_030",
-        "url": "https://picsum.photos/150?random=30",
+        "url": "character/character_030.png",
         "name": "フィービー",
         "attribute": "回折",
         "rank": "5",
@@ -362,7 +362,7 @@
     },
     {
         "id": "img_031",
-        "url": "https://picsum.photos/150?random=31",
+        "url": "character/character_031.png",
         "name": "ブラント",
         "attribute": "焦熱",
         "rank": "5",
@@ -374,7 +374,7 @@
     },
     {
         "id": "img_032",
-        "url": "https://picsum.photos/150?random=32",
+        "url": "character/character_032.png",
         "name": "カンタレラ",
         "attribute": "消滅",
         "rank": "5",
@@ -386,7 +386,7 @@
     },
     {
         "id": "img_033",
-        "url": "https://picsum.photos/150?random=33",
+        "url": "character/character_013.png",
         "name": "漂泊者(気動)",
         "attribute": "気動",
         "rank": "5",
@@ -398,7 +398,7 @@
     },
     {
         "id": "img_034",
-        "url": "https://picsum.photos/150?random=34",
+        "url": "character/character_034.png",
         "name": "ザンニー",
         "attribute": "回折",
         "rank": "5",
@@ -410,7 +410,7 @@
     },
     {
         "id": "img_035",
-        "url": "https://picsum.photos/150?random=35",
+        "url": "character/character_035.png",
         "name": "シャコンヌ",
         "attribute": "気動",
         "rank": "5",
@@ -422,7 +422,7 @@
     },
     {
         "id": "img_036",
-        "url": "https://picsum.photos/150?random=36",
+        "url": "character/character_036.png",
         "name": "カルテジア",
         "attribute": "気動",
         "rank": "5",
@@ -434,7 +434,7 @@
     },
     {
         "id": "img_037",
-        "url": "https://picsum.photos/150?random=37",
+        "url": "character/character_037.png",
         "name": "ルパ",
         "attribute": "焦熱",
         "rank": "5",
@@ -446,7 +446,7 @@
     },
     {
         "id": "img_038",
-        "url": "https://picsum.photos/150?random=38",
+        "url": "character/character_038.png",
         "name": "フローヴァ",
         "attribute": "消滅",
         "rank": "5",
@@ -458,7 +458,7 @@
     },
     {
         "id": "img_039",
-        "url": "https://picsum.photos/150?random=39",
+        "url": "character/character_039.png",
         "name": "オーガスタ",
         "attribute": "電導",
         "rank": "5",
@@ -470,7 +470,7 @@
     },
     {
         "id": "img_040",
-        "url": "https://picsum.photos/150?random=40",
+        "url": "character/character_040.png",
         "name": "ユーノ",
         "attribute": "気動",
         "rank": "5",
@@ -482,7 +482,7 @@
     },
     {
         "id": "img_041",
-        "url": "https://picsum.photos/150?random=41",
+        "url": "character/character_041.png",
         "name": "ガルブレーナ",
         "attribute": "焦熱",
         "rank": "5",
@@ -494,7 +494,7 @@
     },
     {
         "id": "img_042",
-        "url": "https://picsum.photos/150?random=42",
+        "url": "character/character_042.png",
         "name": "仇遠",
         "attribute": "気動",
         "rank": "5",
@@ -506,7 +506,7 @@
     },
     {
         "id": "img_043",
-        "url": "https://picsum.photos/150?random=43",
+        "url": "character/character_043.png",
         "name": "千咲",
         "attribute": "消滅",
         "rank": "5",
@@ -518,7 +518,7 @@
     },
     {
         "id": "img_044",
-        "url": "https://picsum.photos/150?random=44",
+        "url": "character/character_044.png",
         "name": "リンネー",
         "attribute": "回折",
         "rank": "5",
@@ -530,7 +530,7 @@
     },
     {
         "id": "img_045",
-        "url": "https://picsum.photos/150?random=45",
+        "url": "character/character_045.png",
         "name": "モーニエ",
         "attribute": "焦熱",
         "rank": "5",
@@ -542,7 +542,7 @@
     },
     {
         "id": "img_046",
-        "url": "https://picsum.photos/150?random=46",
+        "url": "character/character_046.png",
         "name": "エイメス",
         "attribute": "焦熱",
         "rank": "5",
@@ -554,7 +554,7 @@
     },
     {
         "id": "img_047",
-        "url": "https://picsum.photos/150?random=47",
+        "url": "character/character_047.png",
         "name": "リューク",
         "attribute": "回折",
         "rank": "5",
@@ -566,7 +566,7 @@
     },
     {
         "id": "img_048",
-        "url": "https://picsum.photos/150?random=48",
+        "url": "character/character_048.png",
         "name": "シグリカ",
         "attribute": "気動",
         "rank": "5",
@@ -578,7 +578,7 @@
     },
     {
         "id": "img_049",
-        "url": "https://picsum.photos/150?random=49",
+        "url": "character/character_049.png",
         "name": "緋雪",
         "attribute": "凝縮",
         "rank": "5",
@@ -590,7 +590,7 @@
     },
     {
         "id": "img_050",
-        "url": "https://picsum.photos/150?random=50",
+        "url": "character/character_050.png",
         "name": "ダーニャ",
         "attribute": "焦熱",
         "rank": "5",
@@ -602,7 +602,7 @@
     },
     {
         "id": "img_051",
-        "url": "https://picsum.photos/150?random=51",
+        "url": "character/character_051.png",
         "name": "レベッカ",
         "attribute": "電導",
         "rank": "5",
@@ -614,7 +614,7 @@
     },
     {
         "id": "img_052",
-        "url": "https://picsum.photos/150?random=52",
+        "url": "character/character_052.png",
         "name": "ルーシー",
         "attribute": "回折",
         "rank": "5",
@@ -626,7 +626,7 @@
     },
     {
         "id": "img_053",
-        "url": "https://picsum.photos/150?random=53",
+        "url": "character/character_053.png",
         "name": "ルシラー",
         "attribute": "凝縮",
         "rank": "5",

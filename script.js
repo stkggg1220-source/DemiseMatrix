@@ -1,4 +1,4 @@
-const GAS_API_URL = "/.data.json";
+const DATA_URL = "/.data.json";
 
 const teamsWrapper = document.getElementById('teams-wrapper');
 const poolContainer = document.getElementById('pool-container');
@@ -345,8 +345,8 @@ async function loadApp() {
 
   try {
     // データ（JSON）を一括で取得
-    const response = await fetch(GAS_API_URL);
-    if (!response.ok) throw new Error('メインデータのネットワークエラー');
+    const response = await fetch(DATA_URL);
+    if (!response.ok) throw new Error('データファイルの読み込みに失敗しました');
     
     const allData = await response.json();
     
