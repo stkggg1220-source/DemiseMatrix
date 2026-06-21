@@ -270,7 +270,6 @@ h2.panel-title {
   transition: all 0.2s;
 }
 
-
 .flex-controls {
   display: flex;
   flex-wrap: wrap;
@@ -463,6 +462,7 @@ select, .sort-btn {
   .control-item label { display: none; } 
   #sort-rank-toggle { width: 70px; }
 
+<<<<<<< HEAD
   .grid-layout { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; }
   .pool-layout { grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; min-height: 100px; }
   
@@ -483,4 +483,26 @@ select, .sort-btn {
   .team-header { margin-bottom: 4px; }
   .team-title { font-size: 0.75rem; }
   .new-team-zone { padding: 6px; min-height: 35px; font-size: 0.7rem; margin-top: 5px; }
+=======
+  .grid-layout { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; }
+  .pool-layout { grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; min-height: 100px; }
+  
+  .right-side .scrollable-zone {
+    max-height: 65vw; 
+    overflow-y: auto;
+    border-bottom: 1px solid #e2e8f0; 
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+  }
+
+  .img-card { max-width: 100%; }
+  .img-info { font-size: 0.5rem; padding-top: 1px; }
+
+  .description-box { margin-top: 2px; padding: 6px; font-size: 0.7rem; height: auto; min-height: 50px; }
+  
+  .team-box { padding: 6px; margin-bottom: 6px; }
+  .team-header { margin-bottom: 4px; }
+  .team-title { font-size: 0.75rem; }
+  .new-team-zone { padding: 6px; min-height: 35px; font-size: 0.7rem; margin-top: 5px; }
+>>>>>>> parent of 9649498 (Update style.css)
 }
