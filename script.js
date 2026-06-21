@@ -1,4 +1,4 @@
-const DATA_URL = "/.data.json";
+const DATA_URL = "https://stkggg1220-source.github.io/DemiseMatrix/data.json";
 
 const teamsWrapper = document.getElementById('teams-wrapper');
 const poolContainer = document.getElementById('pool-container');
