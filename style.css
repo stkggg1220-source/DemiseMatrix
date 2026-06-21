@@ -211,6 +211,21 @@
       gap: 12px;
       flex-shrink: 0;
     }
+    .attr-btn img {
+      width: 17px;
+      height: 17px;
+      display: block;
+      margin: 0 auto;
+      pointer-events: none;
+    }
+
+    .attr-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      padding: 4px;
+    }
 
     .attr-group {
       display: flex;
