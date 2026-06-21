@@ -1,5 +1,4 @@
-const GAS_API_URL = "https://script.google.com/macros/s/AKfycbxV8zBZFHhrCjyuqWdmuzVjoWt3xYYq7t8VA8BBB_TtFsUuko2Fr0OFMTh99jY7ETCKhA/exec";
-// ※もしGASを使わず、作成したJSONファイルを直接読み込む場合は、上記を './data.json' などに変更してください。
+const GAS_API_URL = "/.data.json";
 
 const teamsWrapper = document.getElementById('teams-wrapper');
 const poolContainer = document.getElementById('pool-container');
