@@ -262,7 +262,6 @@ h2.panel-title {
   transition: all 0.2s;
 }
 
-
 .flex-controls {
   display: flex;
   flex-wrap: wrap;
@@ -479,15 +478,7 @@ select, .sort-btn {
   #sort-rank-toggle { width: 70px; }
 
   .grid-layout { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; }
-  .pool-layout { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); /* 3列で統一 */
-    gap: 4px; 
-    padding: 4px; 
-    min-height: 100px;
-    width: 100%;
-    box-sizing: border-box; /* 枠線を幅に含める */
-  }
+  .pool-layout { grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; min-height: 100px; }
   
   .right-side .scrollable-zone {
     max-height: 65vw; 
@@ -497,18 +488,7 @@ select, .sort-btn {
     margin-bottom: 4px;
   }
 
-  .img-card { 
-    width: 100%;       /* 親要素(グリッドの1セル)いっぱいに広げる */
-    max-width: none;   /* max-widthを解除 */
-    aspect-ratio: 1/1; /* 正方形を維持 */
-    margin: 0;         /* マージンをリセット */
-  }
-  .img-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* 画像が歪まないように収める */
-  }
-
+  .img-card { max-width: 100%; }
   .img-info { font-size: 0.5rem; padding-top: 1px; }
 
   .description-box { margin-top: 2px; padding: 6px; font-size: 0.7rem; height: auto; min-height: 50px; }
