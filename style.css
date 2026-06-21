@@ -203,8 +203,8 @@ h2.panel-title {
 
 /* 属性ボタン内の画像調整 */
 .attr-btn img {
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   display: block;
   margin: 0 auto;
   pointer-events: none;
