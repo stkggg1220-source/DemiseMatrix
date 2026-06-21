@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画像配置システム（シート3タイトル連動版）</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="main-container">
+    
+    <div class="info-side panel">
+      <div class="panel-header">
+        <h2 class="panel-title" id="info-panel-title">情報</h2>
+      </div>
+      <div class="info-content">
+        <div id="info-images-container" class="info-images-layout">
+          <div style="font-size: 0.75rem; color: #94a3b8;">画像読込中...</div>
+        </div>
+        <div id="info-description-box" class="info-description-box">
+          画像をタップするとここに情報が表示されます
+        </div>
+      </div>
+    </div>
+
+    <div class="left-side panel">
+      <div class="panel-header">
+        <h2 class="panel-title">配置エリア</h2>
+        <button id="global-reset-btn" class="global-reset-btn">全リセット</button>
+      </div>
+      <div class="scrollable-zone" id="teams-wrapper"></div>
+    </div>
+
+    <div class="right-side panel">
+      <div class="panel-header">
+        <h2 class="panel-title">画像プール</h2>
+      </div>
+      
+      <div class="control-panel">
+        <div class="attr-group">
+          <span>属性:</span>
+          <div class="attr-btn-group">
+            <button class="attr-btn active" data-val="all">全て</button>
+            <button class="attr-btn" data-val="月">月</button>
+            <button class="attr-btn" data-val="火">火</button>
+            <button class="attr-btn" data-val="水">水</button>
+            <button class="attr-btn" data-val="木">木</button>
+            <button class="attr-btn" data-val="金">金</button>
+          </div>
+        </div>
+
+        <div class="flex-controls">
+          <div class="control-item">
+            <label>役割:</label>
+            <select id="filter-role">
+              <option value="all">すべて</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <label>種別:</label>
+            <select id="filter-type">
+              <option value="all">すべて</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <label>バフ:</label>
+            <select id="filter-buff">
+              <option value="all">すべて</option>
+            </select>
+          </div>
+          <div class="control-item" style="margin-left: auto;">
+            <button class="sort-btn" id="sort-rank-toggle" data-order="asc">昇順 ▲</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="scrollable-zone">
+        <div id="pool-container" class="pool-layout sortable-zone">
+          <div id="loading-message">📡 データを読み込んでいます...</div>
+        </div>
+      </div>
+      
+      <div id="description-box" class="description-box">
+        画像をクリック（スマホはタップ）すると、ここに説明文が表示されます。<br>
+        ※画像をダブルタップすると「プール⇄チーム」間の移動が簡単にできます。
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
