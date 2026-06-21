@@ -225,7 +225,7 @@
     .attr-btn {
       padding: 4px 12px;
       background: transparent !important;
-      color: #475569;
+      border: none !important;
       cursor: pointer;
       font-size: 0.85rem;
       transition: all 0.2s;
