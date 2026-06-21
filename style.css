@@ -256,9 +256,8 @@ h2.panel-title {
 .attr-btn-group { display: flex; gap: 6px; flex-wrap: wrap; }
 .attr-btn {
   padding: 4px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 20px;
-  background: #fff;
+  border: none !important;
+  background: transparent !important;
   color: #475569;
   cursor: pointer;
   font-size: 0.85rem;
@@ -266,7 +265,6 @@ h2.panel-title {
 }
 .attr-btn:hover { background: #e2e8f0; }
 .attr-btn.active {
-  background: #3b82f6;
   color: #fff;
   border-color: #3b82f6;
   font-weight: bold;
