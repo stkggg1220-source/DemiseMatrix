@@ -261,12 +261,6 @@ h2.panel-title {
   font-size: 0.85rem;
   transition: all 0.2s;
 }
-.attr-btn:hover { background: #e2e8f0; }
-.attr-btn.active {
-  color: #fff;
-  border-color: #3b82f6;
-  font-weight: bold;
-}
 
 .flex-controls {
   display: flex;
