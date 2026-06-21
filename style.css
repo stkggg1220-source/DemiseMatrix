@@ -203,11 +203,19 @@ h2.panel-title {
 
 /* 属性ボタン内の画像調整 */
 .attr-btn img {
+<<<<<<< HEAD
   width: 17px;
   height: 17px;
   display: block;
   margin: 0 auto;
   pointer-events: none;
+=======
+  width: 15px;
+  height: 15px;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
+>>>>>>> parent of 6e47769 (Update style.css)
 }
 .attr-btn {
   display: flex;
