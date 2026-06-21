@@ -200,6 +200,38 @@ h2.panel-title {
 }
 
 /* === コントロールパネル === */
+
+/* 属性ボタン内の画像調整 */
+.attr-btn img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
+}
+.attr-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 4px;
+}
+.attr-btn.active img {
+  filter: brightness(0) invert(1);
+}
+
+/* スマホ版の属性ボタンレイアウト調整 */
+@media (max-width: 1000px) {
+  .attr-btn-group {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    width: 100%;
+  }
+  .attr-btn { padding: 2px; font-size: 0.5rem; }
+  .attr-btn img { width: 20px; height: 20px; }
+}
+
 .control-panel {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -261,7 +293,7 @@ select, .sort-btn {
 
 #sort-rank-toggle { width: 100px; text-align: center; font-weight: bold; }
 
-/* === 画像プール === */
+/* === キャラクター一覧 === */
 .pool-layout {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
