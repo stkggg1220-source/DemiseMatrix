@@ -216,9 +216,7 @@ h2.panel-title {
   min-width: 36px;
   padding: 4px;
 }
-.attr-btn.active img {
-  filter: brightness(0) invert(1);
-}
+
 
 /* スマホ版の属性ボタンレイアウト調整 */
 @media (max-width: 1000px) {
