@@ -143,8 +143,10 @@ input, textarea, select {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-y: auto;
+  
+  /* スマホのスクロール最適化 */
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none; /* containからnoneに変更し、背景の引っ張りを強力に防ぐ */
 }
 
 .global-reset-btn {
@@ -199,7 +201,7 @@ input, textarea, select {
   
   /* スマホのスクロール最適化 */
   -webkit-overflow-scrolling: touch; 
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none; /* 背景が一緒にスクロールされるのを完全にブロック */
 }
 
 .new-team-zone {
@@ -301,7 +303,7 @@ select, .sort-btn {
 
   /* スマホのスクロール最適化 */
   -webkit-overflow-scrolling: touch; 
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none; /* 背景が一緒にスクロールされるのを完全にブロック */
 }
 
 /* === 一覧側の説明文表示エリア (下部) === */
@@ -324,7 +326,7 @@ select, .sort-btn {
 
   /* スマホのスクロール最適化 */
   -webkit-overflow-scrolling: touch; 
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none; 
 }
 .description-box.active { background: #2a2a2a; border-color: #3b82f6; color: #fff; }
 
@@ -347,7 +349,7 @@ select, .sort-btn {
   position: relative;
   transition: border-color 0.1s, box-shadow 0.1s;
   
-  /* スマホで触った時、ドラッグではなく縦スクロールを優先許可する */
+  /* 画像カードを直接触っても縦スクロールを優先する */
   touch-action: pan-y; 
 }
 .img-card:active { cursor: grabbing; box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
@@ -409,7 +411,9 @@ a { color: #4dabf7; }
   }
 
   .panel { height: auto; padding: 6px; }
-  .scrollable-zone { overflow-y: visible; flex: auto; }
+  
+  /* ★重要変更：スマホ版では基本のスクロール領域を「無効化」し、中の要素だけに任せる */
+  .scrollable-zone { overflow: visible !important; flex: auto; }
 
   .info-side {
     grid-column: 1 / 3;
@@ -481,7 +485,6 @@ a { color: #4dabf7; }
   .control-item label { display: none; } 
   #sort-rank-toggle { width: 70px; }
 
-  /* スマホ版のスクロール設定 */
   .grid-layout { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; max-height: 120px; overflow-y: auto; }
   
   .pool-layout { 
@@ -489,14 +492,15 @@ a { color: #4dabf7; }
     gap: 4px; 
     padding: 4px; 
     height: 200px; 
-    flex: none; /* スマホでは高さを固定するためFlexを解除 */
+    flex: none; 
     overflow-y: auto; 
   }
   
+  /* ★重要変更：右側の外枠は「スクロールしない（visible）」設定にして入れ子を解消 */
   .right-side .scrollable-zone {
-    display: block; /* Flex解除 */
-    max-height: 65vw; 
-    overflow-y: auto; /* スマホでは外側スクロールを復活 */
+    display: block; 
+    max-height: none !important; 
+    overflow-y: visible !important; 
     border-bottom: 1px solid #444; 
     padding-bottom: 4px;
     margin-bottom: 4px;
@@ -505,7 +509,6 @@ a { color: #4dabf7; }
   .img-card { max-width: 100%; }
   .img-info { display: none !important; }
 
-  /* スマホ版の説明文スクロール固定設定 */
   .description-box { margin-top: 2px; padding: 6px; font-size: 0.7rem; height: 70px; overflow-y: auto; }
   
   .team-box { padding: 6px; margin-bottom: 6px; }
