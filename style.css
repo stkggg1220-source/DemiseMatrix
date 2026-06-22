@@ -79,24 +79,23 @@ h2.panel-title {
   display: flex;
   flex-direction: column; 
   align-items: center;    
-  gap: 10px;
+  gap: 0px;
 }
   
 .info-img-card {
-  width: 100%;          /* 変更: 横幅をエリアいっぱいにする */
-  max-width: none;      /* 変更: 横幅の制限を解除 */
+  width: 100%;
+  max-width: none;
   aspect-ratio: 1 / 1;
-  border: none;         /* 変更: ボーダーを消す */
+  border: none; 
   border-radius: 4px;
   background: #fff;
-  padding: 0;           /* 変更: 隙間を無くすためパディングを0に */
+  padding: 0;
   cursor: pointer;
   box-sizing: border-box;
-  transition: box-shadow 0.2s; /* 変更: ボーダー遷移を削除 */
+  transition: box-shadow 0.2s;
 }
   
 .info-img-card.selected {
-  /* 変更: 枠線がないため、選択時はシャドウで強調する */
   box-shadow: 0 0 0 3px #f59e0b;
 }
 
@@ -402,18 +401,23 @@ select, .sort-btn {
   }
   
   .info-images-layout {
-    flex-direction: row;        
-    flex-wrap: nowrap;         
-    overflow-x: auto;          
-    justify-content: flex-start;
-    padding-bottom: 6px;       
-    gap: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    width: 100%;
+    gap: 0;
+    margin-bottom: 8px; 
   }
 
   .info-img-card { 
-    width: 100%;         /* 変更: 55pxから100%に調整しスマホエリアでも横幅いっぱい */
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;        
     max-width: none;
-    flex-shrink: 0;      
+    aspect-ratio: 1 / 1;
+    border: none;
+    padding: 0;
   }
 
   .info-description-box { font-size: 0.7rem; padding: 6px; min-height: 60px; }
