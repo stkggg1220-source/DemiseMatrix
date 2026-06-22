@@ -1,4 +1,4 @@
-/* === ベーススタイル === */
+/* === ベーススタイル (ダークモード統合済み) === */
 body {
   background-color: #121212;
   color: #e0e0e0;
@@ -9,15 +9,7 @@ body {
   overflow: hidden;
 }
 
-.container, 
-.info-content, 
-.main-wrapper {
-  background-color: #1e1e1e !important;
-  color: #ffffff;
-  border: 1px solid #333; /* 境界線を薄いグレーにすると区切りが見やすくなります */
-}
-
-h1, h2, h3, .title {
+h1, h2, h3, .title, h2.panel-title {
   color: #ffffff;
 }
 
@@ -27,6 +19,7 @@ input, textarea, select {
   border: 1px solid #444;
 }
 
+/* === レイアウトコンテナ === */
 .main-container {
   display: flex;
   gap: 20px;
@@ -39,10 +32,10 @@ input, textarea, select {
 }
 
 .panel {
-  background: #ffffff;
+  background: #1e1e1e; /* ダーク背景 */
   border-radius: 12px;
   padding: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #333; /* 暗い境界線 */
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -72,20 +65,21 @@ input, textarea, select {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  border-bottom: 3px solid #cbd5e1;
+  border-bottom: 3px solid #444;
   padding-bottom: 8px;
   flex-shrink: 0;
 }
 
-h2.panel-title {
-  font-size: 1.3rem;
-  margin: 0;
-  color: #1e293b;
+.scrollable-zone {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
+/* === 情報エリア === */
 .info-content {
   font-size: 0.85rem;
-  color: #475569;
+  color: #e0e0e0;
   line-height: 1.6;
   word-break: break-word;
   display: flex;
@@ -93,7 +87,6 @@ h2.panel-title {
   gap: 5px;
 }
 
-/* === 情報エリアの画像・説明表示用 (PC版) === */
 .info-images-layout {
   display: flex;
   flex-direction: column; 
@@ -132,12 +125,12 @@ h2.panel-title {
 }
 
 .info-description-box {
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background: #2a2a2a;
+  border: 1px solid #444;
   border-radius: 6px;
   padding: 10px;
   font-size: 0.8rem;
-  color: #475569;
+  color: #e0e0e0;
   min-height: 80px;
   white-space: pre-wrap;
   word-break: break-word;
@@ -157,16 +150,10 @@ h2.panel-title {
 }
 .global-reset-btn:hover { background-color: #dc2626; }
 
-.scrollable-zone {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 8px;
-}
-
 /* === チームエリア === */
 .team-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #1e1e1e;
+  border: 1px solid #444;
   border-radius: 8px;
   padding: 8px 12px;
   margin-bottom: 10px;
@@ -178,34 +165,31 @@ h2.panel-title {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* チームのヘッダーを掴んで並び替え */
 .team-header { 
   margin-bottom: 6px; 
   cursor: grab; 
   user-select: none;
 }
-.team-header:active {
-  cursor: grabbing;
-}
-.team-title { font-weight: bold; color: #475569; font-size: 0.95rem; pointer-events: none; }
+.team-header:active { cursor: grabbing; }
+.team-title { font-weight: bold; color: #e0e0e0; font-size: 0.95rem; pointer-events: none; }
 
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
   min-height: 45px; 
-  background: #fff;
-  border: 2px dashed #cbd5e1;
+  background: #1e1e1e;
+  border: 2px dashed #444;
   border-radius: 6px;
   padding: 6px;
   align-content: start;
 }
 
 .new-team-zone {
-  border: 2px dashed #94a3b8;
+  border: 2px dashed #555;
   border-radius: 8px;
-  background: #f1f5f9;
-  color: #64748b;
+  background: #2a2a2a;
+  color: #aaa;
   text-align: center;
   padding: 15px;
   margin-top: 10px;
@@ -218,15 +202,15 @@ h2.panel-title {
   transition: background-color 0.2s, border-color 0.2s;
 }
 .new-team-zone:hover {
-  background: #e2e8f0;
+  background: #333;
   border-color: #3b82f6;
-  color: #3b82f6;
+  color: #4dabf7;
 }
 
 /* === コントロールパネル === */
 .control-panel {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #1e1e1e;
+  border: 1px solid #444;
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 15px;
@@ -235,28 +219,13 @@ h2.panel-title {
   gap: 12px;
   flex-shrink: 0;
 }
-.attr-btn img {
-  width: 18px;
-  height: 18px;
-  display: block;
-  margin: 0 auto;
-  pointer-events: none;
-}
-
-.attr-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 36px;
-  padding: 4px;
-}
 
 .attr-group {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 0.85rem;
-  color: #475569;
+  color: #e0e0e0;
   font-weight: bold;
   flex-wrap: wrap;
 }
@@ -268,27 +237,32 @@ h2.panel-title {
   cursor: pointer;
   font-size: 0.85rem;
   transition: all 0.2s;
-}
-
-.flex-controls {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
   align-items: center;
+  justify-content: center;
+  min-width: 36px;
+}
+.attr-btn img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
 }
 
-.control-item { display: flex; align-items: center; gap: 4px; font-size: 0.85rem; color: #475569; }
+.flex-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.control-item { display: flex; align-items: center; gap: 4px; font-size: 0.85rem; color: #e0e0e0; }
 
 select, .sort-btn {
   padding: 6px 8px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #444;
   border-radius: 6px;
-  background: #fff;
+  background: #2a2a2a;
+  color: #fff;
   font-size: 0.85rem;
   cursor: pointer;
 }
-.sort-btn:hover { background: #f1f5f9; }
-  
+.sort-btn:hover { background: #333; }
 #sort-rank-toggle { width: 100px; text-align: center; font-weight: bold; }
 
 /* === 画像プール === */
@@ -297,22 +271,22 @@ select, .sort-btn {
   grid-template-columns: repeat(10, 1fr);
   gap: 6px;
   min-height: 200px;
-  background: #fff;
-  border: 2px dashed #cbd5e1;
+  background: #1e1e1e;
+  border: 2px dashed #444;
   border-radius: 6px;
   padding: 10px;
   align-content: start;
 }
 
-/* === 説明文表示エリア === */
+/* === 説明文表示エリア (下部) === */
 .description-box {
   margin-top: 15px;
   padding: 15px;
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background: #1e1e1e;
+  border: 1px solid #444;
   border-radius: 8px;
   font-size: 0.9rem;
-  color: #64748b;
+  color: #ccc;
   line-height: 1.6;
   height: calc(1.6em * 3 + 30px); 
   box-sizing: border-box;
@@ -322,17 +296,17 @@ select, .sort-btn {
   word-break: break-word; 
   flex-shrink: 0; 
 }
-.description-box.active { background: #eff6ff; border-color: #3b82f6; color: #1e293b; }
+.description-box.active { background: #2a2a2a; border-color: #3b82f6; color: #fff; }
 
 /* === 画像カード === */
 .img-card {
-  background: #ffffff;
+  background: #2a2a2a;
   padding: 2px; 
   border-radius: 4px;
   cursor: grab;
   box-sizing: border-box;
-  border: 1px solid #cbd5e1;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border: 1px solid #444;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   width: 100%;
   max-width: 55px; 
   margin: 0 auto; 
@@ -344,13 +318,13 @@ select, .sort-btn {
   transition: border-color 0.1s, box-shadow 0.1s;
   touch-action: manipulation;
 }
-.img-card:active { cursor: grabbing; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.img-card:active { cursor: grabbing; box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
 .img-card.is-hidden { display: none !important; }
 
 .img-card.selected-card {
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px #3b82f6;
-  background: #f0fdf4;
+  background: rgba(59, 130, 246, 0.2); /* ダークテーマに馴染む選択色 */
 }
 
 .img-wrapper {
@@ -373,36 +347,24 @@ select, .sort-btn {
 .img-info {
   font-size: 0.6rem;
   font-weight: bold;
-  color: #475569;
+  color: #aaa;
   text-align: center;
   width: 100%;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid #444;
   padding-top: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.ghost {
-  opacity: 0.2;
-  background: #93c5fd;
-  border: 2px dashed #3b82f6;
-}
-
-#loading-message {
-  grid-column: 1 / -1;
-  text-align: center;
-  color: #64748b;
-  padding: 20px;
-  font-size: 0.9rem;
-}
+.ghost { opacity: 0.2; background: rgba(59, 130, 246, 0.2); border: 2px dashed #3b82f6; }
+#loading-message { grid-column: 1 / -1; text-align: center; color: #aaa; padding: 20px; font-size: 0.9rem; }
+a { color: #4dabf7; }
 
 /* === スマホ用のレイアウト === */
 @media (max-width: 1000px) {
-  body {
-    overflow: auto; 
-    height: auto;
-  }
+  body { overflow: auto; height: auto; }
+  
   .main-container {
     display: grid;
     grid-template-columns: 1fr 1fr; 
@@ -414,7 +376,7 @@ select, .sort-btn {
     min-height: 100vh;
   }
 
-  .panel { height: auto; }
+  .panel { height: auto; padding: 6px; }
   .scrollable-zone { overflow-y: visible; flex: auto; }
 
   .info-side {
@@ -425,25 +387,27 @@ select, .sort-btn {
     overflow-y: auto; 
   }
   
+  /* スマホ: 画像を横一列に並べる */
   .info-images-layout {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: hidden;
     width: 100%;
-    gap: 0;
+    gap: 5px !important;
     margin: 0;
     padding: 0;
     line-height: 0;
     align-items: flex-start;
   }
 
+  /* スマホ: 画像の幅を画面に合わせて調整 */
   .info-img-card {
     flex: 1 1 0;
     min-width: 0;
     width: auto;
     max-width: none;
-    aspect-ratio: 1 / 1;
+    height: auto;
     border: none;
     padding: 0 !important;
     margin: 0 !important;
@@ -455,18 +419,23 @@ select, .sort-btn {
   .info-img-card img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: contain;
     margin: 0;
     padding: 0;
   }
 
-  .info-description-box { font-size: 0.7rem; padding: 6px; min-height: 60px; }
+  /* スマホ: 説明文を画像の下の行に配置 */
+  .info-description-box { 
+    font-size: 0.7rem; 
+    padding: 6px; 
+    min-height: 60px;
+    margin-top: 5px; 
+  }
 
   .left-side { grid-column: 1; grid-row: 2; width: 100%; }
   .right-side { grid-column: 2; grid-row: 2; width: 100%; }
 
-  .panel { padding: 6px; }
   h2.panel-title { font-size: 0.8rem; }
   .global-reset-btn { padding: 4px; font-size: 0.65rem; }
   .panel-header { margin-bottom: 6px; padding-bottom: 4px; }
@@ -475,7 +444,7 @@ select, .sort-btn {
   .attr-group { display: flex; flex-wrap: nowrap; width: 100%; gap: 4px; }
   .attr-group span { font-size: 0.6rem; white-space: nowrap; }
   .attr-btn-group { display: flex; flex-wrap: nowrap; flex: 1; gap: 2px; width: 100%; }
-  .attr-btn { flex: 1; padding: 4px 0; font-size: 0.6 flex; min-width: 0; text-align: center; white-space: nowrap; }
+  .attr-btn { flex: 1; padding: 4px 0; font-size: 0.6rem; min-width: 0; text-align: center; white-space: nowrap; }
 
   select, .sort-btn { padding: 2px 4px; font-size: 0.65rem; }
   .flex-controls { gap: 4px; }
@@ -489,7 +458,7 @@ select, .sort-btn {
   .right-side .scrollable-zone {
     max-height: 65vw; 
     overflow-y: auto;
-    border-bottom: 1px solid #e2e8f0; 
+    border-bottom: 1px solid #444; 
     padding-bottom: 4px;
     margin-bottom: 4px;
   }
@@ -503,28 +472,4 @@ select, .sort-btn {
   .team-header { margin-bottom: 4px; }
   .team-title { font-size: 0.75rem; }
   .new-team-zone { padding: 6px; min-height: 35px; font-size: 0.7rem; margin-top: 5px; }
-}
-
-/* --- 背景と文字色の反転（ダークモード） --- */
-body {
-  background-color: #121212; /* 深い黒色 */
-  color: #e0e0e0;           /* 読みやすいグレーの文字色 */
-}
-
-/* 情報エリアの背景（必要に応じて） */
-.info-content {
-  background-color: #1e1e1e; /* わずかに明るい黒でパネル感を出します */
-  color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-/* リンクや強調文字の色も調整すると見やすくなります */
-a {
-  color: #4dabf7; /* 黒背景で目立つ明るい青 */
-}
-
-/* 画像カードの選択時の枠色を強調 */
-.info-img-card.selected {
-  box-shadow: inset 0 0 0 3px #f59e0b; /* 黄色い枠は黒背景でも映えます */
 }
