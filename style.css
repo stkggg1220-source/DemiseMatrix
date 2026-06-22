@@ -79,7 +79,7 @@ h2.panel-title {
   display: flex;
   flex-direction: column; 
   align-items: stretch;
-  gap: 0 !important;
+  gap: 5 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
