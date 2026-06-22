@@ -32,10 +32,10 @@ input, textarea, select {
 }
 
 .panel {
-  background: #1e1e1e; /* ダーク背景 */
+  background: #1e1e1e;
   border-radius: 12px;
   padding: 20px;
-  border: 1px solid #333; /* 暗い境界線 */
+  border: 1px solid #333;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -173,11 +173,14 @@ input, textarea, select {
 .team-header:active { cursor: grabbing; }
 .team-title { font-weight: bold; color: #e0e0e0; font-size: 0.95rem; pointer-events: none; }
 
+/* 修正：各チームの配置エリア（キャラ置き場） */
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
   min-height: 45px; 
+  max-height: 150px;      /* ★追加：1チームにキャラが密集した時の最大高さを固定 */
+  overflow-y: auto;       /* ★追加：縦スクロール仕様に */
   background: #1e1e1e;
   border: 2px dashed #444;
   border-radius: 6px;
@@ -265,12 +268,13 @@ select, .sort-btn {
 .sort-btn:hover { background: #333; }
 #sort-rank-toggle { width: 100px; text-align: center; font-weight: bold; }
 
-/* === 画像プール === */
+/* === キャラクター一覧（画像プール） === */
 .pool-layout {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 6px;
-  min-height: 200px;
+  height: 320px;          /* ★変更：画像一覧全体の高さをガチっと固定 */
+  overflow-y: auto;       /* ★変更：はみ出したら内部スクロールする仕様に */
   background: #1e1e1e;
   border: 2px dashed #444;
   border-radius: 6px;
@@ -278,7 +282,7 @@ select, .sort-btn {
   align-content: start;
 }
 
-/* === 説明文表示エリア (下部) === */
+/* === 一覧側の説明文表示エリア (下部) === */
 .description-box {
   margin-top: 15px;
   padding: 15px;
@@ -288,9 +292,9 @@ select, .sort-btn {
   font-size: 0.9rem;
   color: #ccc;
   line-height: 1.6;
-  height: calc(1.6em * 3 + 30px); 
+  height: 110px;          /* ★変更：曖昧な計算式から、110pxの完全固定サイズに変更 */
+  overflow-y: auto;       /* ★変更：文字が溢れたら内部スクロールする仕様に */
   box-sizing: border-box;
-  overflow-y: auto;
   transition: all 0.2s;
   white-space: pre-wrap;
   word-break: break-word; 
@@ -324,7 +328,7 @@ select, .sort-btn {
 .img-card.selected-card {
   border-color: #3b82f6;
   box-shadow: 0 0 0 2px #3b82f6;
-  background: rgba(59, 130, 246, 0.2); /* ダークテーマに馴染む選択色 */
+  background: rgba(59, 130, 246, 0.2);
 }
 
 .img-wrapper {
@@ -387,7 +391,6 @@ a { color: #4dabf7; }
     overflow-y: auto; 
   }
   
-  /* スマホ: 画像を横一列に並べる */
   .info-images-layout {
     display: flex;
     flex-direction: row;
@@ -401,7 +404,6 @@ a { color: #4dabf7; }
     align-items: flex-start;
   }
 
-  /* スマホ: 画像の幅を画面に合わせて調整 */
   .info-img-card {
     flex: 1 1 0;
     min-width: 0;
@@ -425,7 +427,6 @@ a { color: #4dabf7; }
     padding: 0;
   }
 
-  /* スマホ: 説明文を画像の下の行に配置 */
   .info-description-box { 
     font-size: 0.7rem; 
     padding: 6px; 
@@ -452,8 +453,9 @@ a { color: #4dabf7; }
   .control-item label { display: none; } 
   #sort-rank-toggle { width: 70px; }
 
-  .grid-layout { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; }
-  .pool-layout { grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; min-height: 100px; }
+  /* スマホ版のスクロール固定設定 */
+  .grid-layout { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; max-height: 120px; overflow-y: auto; }
+  .pool-layout { grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; height: 200px; overflow-y: auto; }
   
   .right-side .scrollable-zone {
     max-height: 65vw; 
@@ -466,7 +468,8 @@ a { color: #4dabf7; }
   .img-card { max-width: 100%; }
   .img-info { display: none !important; }
 
-  .description-box { margin-top: 2px; padding: 6px; font-size: 0.7rem; height: auto; min-height: 50px; }
+  /* スマホ版の説明文スクロール固定設定 */
+  .description-box { margin-top: 2px; padding: 6px; font-size: 0.7rem; height: 70px; overflow-y: auto; }
   
   .team-box { padding: 6px; margin-bottom: 6px; }
   .team-header { margin-bottom: 4px; }
