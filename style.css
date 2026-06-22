@@ -70,10 +70,18 @@ input, textarea, select {
   flex-shrink: 0;
 }
 
+/* 基本のスクロール領域 */
 .scrollable-zone {
   flex: 1;
   overflow-y: auto;
   padding-right: 8px;
+}
+
+/* 右側（画像一覧側）の2重スクロール防止設定（PC版） */
+.right-side .scrollable-zone {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 外側のスクロールを非表示 */
 }
 
 /* === 情報エリア === */
@@ -135,6 +143,8 @@ input, textarea, select {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 
 .global-reset-btn {
@@ -173,19 +183,23 @@ input, textarea, select {
 .team-header:active { cursor: grabbing; }
 .team-title { font-weight: bold; color: #e0e0e0; font-size: 0.95rem; pointer-events: none; }
 
-/* 修正：各チームの配置エリア（キャラ置き場） */
+/* 各チームの配置エリア（キャラ置き場） */
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
   min-height: 45px; 
-  max-height: 150px;      /* ★追加：1チームにキャラが密集した時の最大高さを固定 */
-  overflow-y: auto;       /* ★追加：縦スクロール仕様に */
+  max-height: 150px;      
+  overflow-y: auto;       
   background: #1e1e1e;
   border: 2px dashed #444;
   border-radius: 6px;
   padding: 6px;
   align-content: start;
+  
+  /* スマホのスクロール最適化 */
+  -webkit-overflow-scrolling: touch; 
+  overscroll-behavior-y: contain;
 }
 
 .new-team-zone {
@@ -273,13 +287,21 @@ select, .sort-btn {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 6px;
-  height: 320px;          /* ★変更：画像一覧全体の高さをガチっと固定 */
-  overflow-y: auto;       /* ★変更：はみ出したら内部スクロールする仕様に */
+  
+  /* Flexboxで余った高さを自動で埋める（PC版） */
+  flex: 1;
+  min-height: 0; 
+  overflow-y: auto;       
+  
   background: #1e1e1e;
   border: 2px dashed #444;
   border-radius: 6px;
   padding: 10px;
   align-content: start;
+
+  /* スマホのスクロール最適化 */
+  -webkit-overflow-scrolling: touch; 
+  overscroll-behavior-y: contain;
 }
 
 /* === 一覧側の説明文表示エリア (下部) === */
@@ -292,13 +314,17 @@ select, .sort-btn {
   font-size: 0.9rem;
   color: #ccc;
   line-height: 1.6;
-  height: 110px;          /* ★変更：曖昧な計算式から、110pxの完全固定サイズに変更 */
-  overflow-y: auto;       /* ★変更：文字が溢れたら内部スクロールする仕様に */
+  height: 110px;          
+  overflow-y: auto;       
   box-sizing: border-box;
   transition: all 0.2s;
   white-space: pre-wrap;
   word-break: break-word; 
   flex-shrink: 0; 
+
+  /* スマホのスクロール最適化 */
+  -webkit-overflow-scrolling: touch; 
+  overscroll-behavior-y: contain;
 }
 .description-box.active { background: #2a2a2a; border-color: #3b82f6; color: #fff; }
 
@@ -320,7 +346,9 @@ select, .sort-btn {
   gap: 2px;
   position: relative;
   transition: border-color 0.1s, box-shadow 0.1s;
-  touch-action: manipulation;
+  
+  /* スマホで触った時、ドラッグではなく縦スクロールを優先許可する */
+  touch-action: pan-y; 
 }
 .img-card:active { cursor: grabbing; box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
 .img-card.is-hidden { display: none !important; }
@@ -453,13 +481,22 @@ a { color: #4dabf7; }
   .control-item label { display: none; } 
   #sort-rank-toggle { width: 70px; }
 
-  /* スマホ版のスクロール固定設定 */
+  /* スマホ版のスクロール設定 */
   .grid-layout { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; max-height: 120px; overflow-y: auto; }
-  .pool-layout { grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; height: 200px; overflow-y: auto; }
+  
+  .pool-layout { 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 4px; 
+    padding: 4px; 
+    height: 200px; 
+    flex: none; /* スマホでは高さを固定するためFlexを解除 */
+    overflow-y: auto; 
+  }
   
   .right-side .scrollable-zone {
+    display: block; /* Flex解除 */
     max-height: 65vw; 
-    overflow-y: auto;
+    overflow-y: auto; /* スマホでは外側スクロールを復活 */
     border-bottom: 1px solid #444; 
     padding-bottom: 4px;
     margin-bottom: 4px;
