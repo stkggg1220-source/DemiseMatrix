@@ -1,11 +1,30 @@
 /* === ベーススタイル === */
 body {
-  background-color: #f1f5f9;
+  background-color: #121212;
+  color: #e0e0e0;
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   height: 100vh;
   overflow: hidden;
+}
+
+.container, 
+.info-content, 
+.main-wrapper {
+  background-color: #1e1e1e !important;
+  color: #ffffff;
+  border: 1px solid #333; /* 境界線を薄いグレーにすると区切りが見やすくなります */
+}
+
+h1, h2, h3, .title {
+  color: #ffffff;
+}
+
+input, textarea, select {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
 }
 
 .main-container {
