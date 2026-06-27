@@ -516,29 +516,3 @@ a { color: #4dabf7; }
   .team-title { font-size: 0.75rem; }
   .new-team-zone { padding: 6px; min-height: 35px; font-size: 0.7rem; margin-top: 5px; }
 }
-
-/* === 画像書き出しボタン === */
-.export-btn {
-  background-color: #10b981; /* グリーンのアクセントカラー */
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  width: 100%; /* コントロールパネルの幅に合わせる場合 */
-}
-
-.export-btn:hover { 
-  background-color: #059669; 
-}
-
-.export-btn:active {
-  transform: scale(0.98);
-}
