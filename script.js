@@ -437,7 +437,7 @@ html2canvas(container, {
     backgroundColor: '#121212',
     scale: 2,
     useCORS: true,
-    // ★追加：撮影時に強制的にスタイルを補正する
+    // 撮影時に強制的にスタイルを補正する
     onclone: (clonedDoc) => {
       // 撮影用ドキュメント内の全画像カードの透明度やフィルターをリセット
       const cards = clonedDoc.querySelectorAll('.img-card');
