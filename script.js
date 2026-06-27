@@ -404,51 +404,50 @@ async function loadApp() {
 }
 
 document.getElementById('export-btn').addEventListener('click', function() {
-  // 1. 必要な要素を取得
+  // 1. 先にタブを開く（ブロック対策）
   const newTab = window.open('', '_blank');
-  newTab.document.write('<html><body style="background:#121212; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh;"></body></html>');
+  newTab.document.write('<html><body style="background:#121212; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh;">画像生成中...</body></html>');
 
   const container = document.querySelector('.main-container');
   const leftSide = document.querySelector('.left-side');
   const rightSide = document.querySelector('.right-side');
   const exportBtn = document.getElementById('export-btn');
   
-  // スマホの表示崩れ防止
   window.scrollTo(0, 0);
 
-  // === 撮影のための「一時的な」レイアウト変更（0.1秒） ===
+  // 撮影用の一時的なレイアウト変更
   const isMobile = window.innerWidth <= 1000;
-  
-  // 右側のキャラ一覧と、出力ボタン自体を隠す
   rightSide.style.display = 'none';
   exportBtn.style.display = 'none';
   
-  // 綺麗に撮影するための幅調整
   if (isMobile) {
-    // スマホの場合：チームエリアを画面幅いっぱい（2列分）に広げる
     leftSide.style.gridColumn = '1 / 3';
   } else {
-    // PCの場合：コンテナ自体の幅を半分のサイズ（情報＋チームの幅）に縮める
     container.style.width = '50%'; 
   }
 
-  // 2. html2canvasを実行して撮影
-html2canvas(container, {
+  // 2. html2canvasを実行
+  html2canvas(container, {
     backgroundColor: '#121212',
     scale: 2,
-    useCORS: true,
-    // 撮影時に強制的にスタイルを補正する
+    useCORS: true, // 外部画像許可の要
     onclone: (clonedDoc) => {
-      // 撮影用ドキュメント内の全画像カードの透明度やフィルターをリセット
+      // 全ての画像タグにCORS属性を付与（これが画像が写らない問題の特効薬です）
+      const allImgs = clonedDoc.querySelectorAll('img');
+      allImgs.forEach(img => {
+        img.setAttribute('crossOrigin', 'anonymous');
+      });
+
+      // キャラカードのスタイル補正
       const cards = clonedDoc.querySelectorAll('.img-card');
       cards.forEach(card => {
         card.style.opacity = '1';
         card.style.filter = 'none';
-        card.style.backgroundColor = '#2a2a2a'; // 明るい方の色を強制
+        card.style.backgroundColor = '#2a2a2a';
       });
     }
   }).then(canvas => {
-    // === 撮影が終わったら元のレイアウトに戻す ===
+    // レイアウトを元に戻す
     rightSide.style.display = '';
     exportBtn.style.display = '';
     if (isMobile) {
@@ -457,7 +456,7 @@ html2canvas(container, {
       container.style.width = ''; 
     }
 
-    // 3. 画像を新しいタブで表示する処理
+    // 3. 画像生成
     const imageURL = canvas.toDataURL("image/png");
 
     if (!newTab) {
@@ -465,16 +464,19 @@ html2canvas(container, {
       return;
     }
 
-// ★先に開いたタブの中身を書き換える
+    // タブへ書き込み
     newTab.document.write(`
       <html>
         <body style="margin:0; background:#121212; display:flex; justify-content:center; align-items:center; min-height:100vh;">
-          <img src="${imageURL}" style="max-width:100%; border:1px solid #444;">
+          <img src="${imageURL}" style="max-width:100%; border:1px solid #444; box-shadow:0 0 20px rgba(0,0,0,0.5);">
         </body>
       </html>
     `);
     newTab.document.close();
+  }).catch(err => {
+    newTab.close();
+    alert("画像の生成に失敗しました。");
+    console.error(err);
   });
 });
-
 loadApp();
