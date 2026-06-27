@@ -519,11 +519,11 @@ a { color: #4dabf7; }
 
 /* === 画像書き出しボタン === */
 .export-btn {
-  background-color: #10b981; /* グリーンのアクセントカラー */
+  background-color: #10b981;
   color: white;
   border: none;
-  padding: 8px 16px;
-  font-size: 0.9rem;
+  padding: 8px 12px;
+  font-size: 0.85rem;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
@@ -532,7 +532,14 @@ a { color: #4dabf7; }
   align-items: center;
   justify-content: center;
   gap: 5px;
-  width: 100%; /* コントロールパネルの幅に合わせる場合 */
+  
+  /* === 以下が巨大化を防ぐストッパーです === */
+  width: 100%;           /* 基本は親の幅に合わせる */
+  max-width: 160px;      /* ただし最大160pxまでしか広がらないように制限 */
+  height: fit-content;   /* 縦幅を中身（文字）の高さにピタッと合わせる（重要！） */
+  flex-shrink: 0;        /* 逆に潰されてしまうのも防ぐ */
+  margin: 10px auto;     /* 上下に少し余白を取り、左右中央に配置する */
+  box-sizing: border-box;
 }
 
 .export-btn:hover { 
