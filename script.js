@@ -403,4 +403,31 @@ async function loadApp() {
   }
 }
 
+document.getElementById('export-btn').addEventListener('click', function() {
+  // 画像化したいエリアを取得
+  const targetElement = document.getElementById('capture-area');
+  
+  // スマホなどでの表示崩れを防ぐため、一時的にスクロールをリセットする処理を入れるとより綺麗に撮れます
+  window.scrollTo(0, 0);
+
+  // html2canvasを実行
+  html2canvas(targetElement, {
+    backgroundColor: '#121212', // あなたのサイトの背景色に合わせる
+    scale: 2,                   // 2にすると高画質（Retina対応）で保存されます
+    useCORS: true               // 外部画像の読み込みエラーを防ぐ
+  }).then(canvas => {
+    // 画像データをURLに変換 (PNG形式)
+    const imageURL = canvas.toDataURL("image/png");
+
+    // ダミーのリンクを作成して自動でダウンロードさせる
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imageURL;
+    downloadLink.download = 'team_layout.png'; // 保存されるファイル名
+    
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  });
+});
+
 loadApp();

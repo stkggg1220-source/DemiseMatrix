@@ -6,10 +6,15 @@
   <title>終焉マトリクスチーム編成シミュレーター</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <body>
 
   <div class="main-container">
     
+<div id="capture-area" style="display: flex; gap: 20px; flex: 5;">
+
     <div class="info-side panel">
       <div class="panel-header">
         <h2 class="panel-title" id="info-panel-title">情報</h2>
@@ -18,6 +23,9 @@
         <div id="info-images-container" class="info-images-layout">
           <div style="font-size: 0.75rem; color: #94a3b8;">画像読込中...</div>
         </div>
+
+<button id="export-btn" class="export-btn">📸 画像保存</button>
+
         <div id="info-description-box" class="info-description-box">
           画像をタップするとここに情報が表示されます
         </div>
@@ -31,6 +39,8 @@
       </div>
       <div class="scrollable-zone" id="teams-wrapper"></div>
     </div>
+
+<div>
 
     <div class="right-side panel">
       <div class="panel-header">
