@@ -406,7 +406,7 @@ async function loadApp() {
 document.getElementById('export-btn').addEventListener('click', function() {
   // 1. 必要な要素を取得
   const newTab = window.open('', '_blank');
-  newTab.document.write('<html><body style="background:#121212; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh;">画像生成中...</body></html>');
+  newTab.document.write('<html><body style="background:#121212; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh;"></body></html>');
 
   const container = document.querySelector('.main-container');
   const leftSide = document.querySelector('.left-side');
