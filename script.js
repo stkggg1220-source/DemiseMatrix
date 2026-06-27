@@ -405,6 +405,9 @@ async function loadApp() {
 
 document.getElementById('export-btn').addEventListener('click', function() {
   // 1. 必要な要素を取得
+  const newTab = window.open('', '_blank');
+  newTab.document.write('<html><body style="background:#121212; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh;">画像生成中...</body></html>');
+
   const container = document.querySelector('.main-container');
   const leftSide = document.querySelector('.left-side');
   const rightSide = document.querySelector('.right-side');
@@ -430,12 +433,22 @@ document.getElementById('export-btn').addEventListener('click', function() {
   }
 
   // 2. html2canvasを実行して撮影
-  html2canvas(container, {
+html2canvas(container, {
     backgroundColor: '#121212',
     scale: 2,
-    useCORS: true
+    useCORS: true,
+    // ★追加：撮影時に強制的にスタイルを補正する
+    onclone: (clonedDoc) => {
+      // 撮影用ドキュメント内の全画像カードの透明度やフィルターをリセット
+      const cards = clonedDoc.querySelectorAll('.img-card');
+      cards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.filter = 'none';
+        card.style.backgroundColor = '#2a2a2a'; // 明るい方の色を強制
+      });
+    }
   }).then(canvas => {
-    // === 撮影が終わったら「一瞬で」元のレイアウトに戻す ===
+    // === 撮影が終わったら元のレイアウトに戻す ===
     rightSide.style.display = '';
     exportBtn.style.display = '';
     if (isMobile) {
@@ -446,28 +459,18 @@ document.getElementById('export-btn').addEventListener('click', function() {
 
     // 3. 画像を新しいタブで表示する処理
     const imageURL = canvas.toDataURL("image/png");
-    const newTab = window.open();
 
     if (!newTab) {
       alert("ポップアップがブロックされました。ブラウザの設定を確認してください。");
       return;
     }
 
+// ★先に開いたタブの中身を書き換える
     newTab.document.write(`
-      <!DOCTYPE html>
-      <html lang="ja">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>書き出し画像（長押し/右クリックで保存）</title>
-        <style>
-          body { margin: 0; padding: 20px; background-color: #121212; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
-          img { max-width: 100%; height: auto; border: 1px solid #444; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
-        </style>
-      </head>
-      <body>
-        <img src="${imageURL}" alt="書き出し画像">
-      </body>
+      <html>
+        <body style="margin:0; background:#121212; display:flex; justify-content:center; align-items:center; min-height:100vh;">
+          <img src="${imageURL}" style="max-width:100%; border:1px solid #444;">
+        </body>
       </html>
     `);
     newTab.document.close();
