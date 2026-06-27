@@ -796,4 +796,83 @@ async function loadApp() {
   }
 }
 
+document.getElementById('export-btn').addEventListener('click', async function() {
+  const newTab = window.open('', '_blank');
+  newTab.document.write('<html><body style="background:#121212; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh;">画像生成中...</body></html>');
+
+  const container = document.querySelector('.main-container');
+  const leftSide = document.querySelector('.left-side');
+  const rightSide = document.querySelector('.right-side');
+  const exportBtn = document.getElementById('export-btn');
+  
+  window.scrollTo(0, 0);
+
+  // === 撮影前の準備 ===
+  const isMobile = window.innerWidth <= 1000;
+  rightSide.style.display = 'none';
+  exportBtn.style.display = 'none';
+  
+  if (isMobile) {
+    leftSide.style.gridColumn = '1 / 3';
+  } else {
+    container.style.width = '50%'; 
+  }
+
+  // ★重要：ページ内のすべての画像の「遅延読み込み」を解除する
+  const allImages = document.querySelectorAll('img');
+  allImages.forEach(img => {
+    if (img.getAttribute('loading') === 'lazy') {
+      img.setAttribute('loading', 'eager');
+    }
+  });
+
+  // スマホが画像を読み込むための猶予を少し（0.5秒）与える
+  await new Promise(resolve => setTimeout(resolve, 500));
+
+  // 2. html2canvasを実行
+  html2canvas(container, {
+    backgroundColor: '#121212',
+    scale: 2,
+    useCORS: true, // CORS設定は残す
+    onclone: (clonedDoc) => {
+      // 今回は setAttribute('crossOrigin', 'anonymous') は使いません
+      const cards = clonedDoc.querySelectorAll('.img-card');
+      cards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.filter = 'none';
+        card.style.backgroundColor = '#2a2a2a';
+      });
+    }
+  }).then(canvas => {
+    // レイアウトを元に戻す
+    rightSide.style.display = '';
+    exportBtn.style.display = '';
+    if (isMobile) {
+      leftSide.style.gridColumn = '';
+    } else {
+      container.style.width = ''; 
+    }
+
+    const imageURL = canvas.toDataURL("image/png");
+
+    if (!newTab) {
+      alert("ポップアップがブロックされました。");
+      return;
+    }
+
+    newTab.document.write(`
+      <html>
+        <body style="margin:0; background:#121212; display:flex; justify-content:center; align-items:center; min-height:100vh;">
+          <img src="${imageURL}" style="max-width:100%; border:1px solid #444;">
+        </body>
+      </html>
+    `);
+    newTab.document.close();
+  }).catch(err => {
+    newTab.close();
+    alert("画像の生成に失敗しました。");
+    console.error(err);
+  });
+});
+
 loadApp();
