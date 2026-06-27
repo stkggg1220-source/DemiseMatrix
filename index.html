@@ -6,13 +6,10 @@
   <title>終焉マトリクスチーム編成シミュレーター</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 <body>
 
   <div class="main-container">
-
+    
     <div class="info-side panel">
       <div class="panel-header">
         <h2 class="panel-title" id="info-panel-title">情報</h2>
@@ -73,7 +70,6 @@
               <option value="all">すべて</option>
             </select>
           </div>
-
           <div class="control-item" style="margin-left: auto;">
             <button class="sort-btn" id="sort-rank-toggle" data-order="asc">昇順 ▲</button>
           </div>
@@ -85,15 +81,13 @@
           <div id="loading-message">📡 データを読み込んでいます...</div>
         </div>
       </div>
-
+      
       <div id="description-box" class="description-box">
         画像をクリック（スマホはタップ）すると、ここに説明文が表示されます。<br>
         ※画像をダブルタップすると「一覧⇄チーム」間の移動が簡単にできます。
       </div>
     </div>
   </div>
-
-<button id="export-btn" class="export-btn">画像保存</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
   <script src="script.js"></script>
