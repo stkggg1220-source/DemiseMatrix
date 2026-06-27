@@ -515,4 +515,33 @@ a { color: #4dabf7; }
   .team-header { margin-bottom: 4px; }
   .team-title { font-size: 0.75rem; }
   .new-team-zone { padding: 6px; min-height: 35px; font-size: 0.7rem; margin-top: 5px; }
+
+/* === 画像書き出しボタン（コンパクト・左揃え） === */
+.export-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 6px 12px;     /* パディングを少し小さくしてコンパクトに */
+  font-size: 0.8rem;     /* フォントサイズを少し小さく */
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  /* === コンパクト＆左揃えの設定 === */
+  width: fit-content;    /* 内容物の幅に合わせる（これがコンパクトの秘訣） */
+  margin: 0;             /* 余白を消す */
+  margin-bottom: 10px;   /* 下に少しだけ空ける */
+  flex-grow: 0;          /* 横に広がらないように固定 */
+}
+
+.export-btn:hover { 
+  background-color: #059669; 
+}
+
 }
