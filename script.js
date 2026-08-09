@@ -403,4 +403,32 @@ async function loadApp() {
   }
 }
 
+const captureBtn = document.getElementById('capture-btn');
+
+captureBtn.addEventListener('click', () => {
+  // 撮影したい対象の要素を指定（ここでは編成エリア全体）
+  const targetElement = document.getElementById('teams-wrapper');
+
+  // html2canvasを実行
+  html2canvas(targetElement, {
+    useCORS: true, // 外部画像を読み込んでいる場合のエラー対策
+    backgroundColor: '#ffffff' // 背景色が透明になるのを防ぐ
+  }).then(canvas => {
+    // Canvasを画像(PNG)のデータURLに変換
+    const imageData = canvas.toDataURL("image/png");
+
+    // ダウンロード用のリンクを擬似的に作成してクリックさせる
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imageData;
+    downloadLink.download = 'team_formation.png'; // 保存されるファイル名
+    
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  }).catch(err => {
+    console.error("画像化に失敗しました:", err);
+    alert("画像の保存に失敗しました。");
+  });
+});
+
 loadApp();
