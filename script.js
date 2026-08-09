@@ -449,19 +449,60 @@ captureBtn.addEventListener('click', () => {
     // Canvasを画像(PNG)のデータURLに変換
     const imageData = canvas.toDataURL("image/png");
 
-    // ダウンロード処理
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageData;
-    downloadLink.download = 'team_formation.png'; 
-    
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
+    /* ====================================================
+       【変更】ここから直接ダウンロードではなく画面表示にする
+       ==================================================== */
+       
+    // 画像を表示するための「モーダル（ポップアップ）」を動的に作成
+    const modal = document.createElement('div');
+    Object.assign(modal.style, {
+      position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '9999',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      padding: '20px', boxSizing: 'border-box'
+    });
+
+    // 案内テキストの作成
+    const instruction = document.createElement('p');
+    instruction.innerHTML = '画像を<strong>右クリック</strong>（スマートフォンは<strong>長押し</strong>）で保存してください。';
+    Object.assign(instruction.style, {
+      color: '#fff', marginBottom: '15px', textAlign: 'center', fontSize: '16px', lineHeight: '1.5'
+    });
+
+    // 画像要素の作成
+    const imgElement = new Image();
+    imgElement.src = imageData;
+    Object.assign(imgElement.style, {
+      maxWidth: '100%', maxHeight: '70vh', objectFit: 'contain',
+      border: '2px solid #ccc', borderRadius: '4px', boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
+    });
+
+    // 閉じるボタンの作成
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '閉じる';
+    Object.assign(closeBtn.style, {
+      marginTop: '20px', padding: '10px 24px', fontSize: '16px', cursor: 'pointer',
+      backgroundColor: '#fff', color: '#333', border: 'none', borderRadius: '4px', fontWeight: 'bold'
+    });
+
+    // 閉じる処理（ボタンクリック、または背景の黒い部分をクリックで閉じる）
+    const closeModal = () => document.body.removeChild(modal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // モーダルに各要素を追加して画面（bodyの最後）に表示
+    modal.appendChild(instruction);
+    modal.appendChild(imgElement);
+    modal.appendChild(closeBtn);
+    document.body.appendChild(modal);
+
   }).catch(err => {
     targetElement.style.overflow = originalOverflow;
     targetElement.style.height = originalHeight;
     console.error("画像化に失敗しました:", err);
-    alert("画像の保存に失敗しました。");
+    alert("画像の生成に失敗しました。");
   });
 });
 
