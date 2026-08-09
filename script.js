@@ -407,46 +407,49 @@ const captureBtn = document.getElementById('capture-btn');
 captureBtn.addEventListener('click', () => {
   const targetElement = document.getElementById('teams-wrapper');
 
-  // 【追加】撮影前の元のスタイルを記憶しておく
   const originalOverflow = targetElement.style.overflow;
   const originalHeight = targetElement.style.height;
 
-  // 【追加】隠れている部分をすべて表示させるためにスタイルを一時的に変更
+  // 隠れている部分をすべて表示させるためにスタイルを一時的に変更
   targetElement.style.overflow = 'visible';
   targetElement.style.height = 'auto';
 
-  // html2canvasを実行
-  html2canvas(targetElement, {
-    useCORS: true,
-    backgroundColor: '#ffffff',
-    scale: 2, // 2にすると高画質（Retina対応）になります
-    scrollY: -window.scrollY, // スクロール位置による上部の見切れを防止
-    windowWidth: document.documentElement.offsetWidth // ウィンドウ幅を強制認識させる
-  }).then(canvas => {
-    // 【追加】撮影が終わったらスタイルを元の状態に戻す
-    targetElement.style.overflow = originalOverflow;
-    targetElement.style.height = originalHeight;
-
-    // Canvasを画像(PNG)のデータURLに変換
-    const imageData = canvas.toDataURL("image/png");
-
-    // ダウンロード処理
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageData;
-    downloadLink.download = 'team_formation.png'; 
+  // 【追加】スタイル変更直後は画像の描画が追いついていないため、0.3秒待つ
+  setTimeout(() => {
     
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  }).catch(err => {
-    // エラー時もスタイルを元に戻す
-    targetElement.style.overflow = originalOverflow;
-    targetElement.style.height = originalHeight;
-    console.error("画像化に失敗しました:", err);
-    alert("画像の保存に失敗しました。");
-  });
-});
+    // html2canvasを実行
+    html2canvas(targetElement, {
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      scale: 2,
+      scrollY: -window.scrollY,
+      windowWidth: document.documentElement.offsetWidth
+    }).then(canvas => {
+      // 撮影が終わったらスタイルを元の状態に戻す
+      targetElement.style.overflow = originalOverflow;
+      targetElement.style.height = originalHeight;
 
+      // Canvasを画像(PNG)のデータURLに変換
+      const imageData = canvas.toDataURL("image/png");
+
+      // ダウンロード処理
+      const downloadLink = document.createElement('a');
+      downloadLink.href = imageData;
+      downloadLink.download = 'team_formation.png'; 
+      
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }).catch(err => {
+      // エラー時もスタイルを元に戻す
+      targetElement.style.overflow = originalOverflow;
+      targetElement.style.height = originalHeight;
+      console.error("画像化に失敗しました:", err);
+      alert("画像の保存に失敗しました。");
+    });
+
+  }, 300); // 300ミリ秒（0.3秒）待機。もしこれでもグレーアウトするなら500に増やしてみてください
+});
 }
 
 loadApp();
