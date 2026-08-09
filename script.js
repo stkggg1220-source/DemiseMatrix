@@ -401,7 +401,6 @@ async function loadApp() {
       }
     });
   }
-}
 
 const captureBtn = document.getElementById('capture-btn');
 
@@ -430,5 +429,7 @@ captureBtn.addEventListener('click', () => {
     alert("画像の保存に失敗しました。");
   });
 });
+
+}
 
 loadApp();
