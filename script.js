@@ -185,7 +185,7 @@ function renderImagesFromData(dataArray) {
       card.dataset.description = data.description || '';
 
       card.innerHTML = `
-        <div class="img-wrapper"><img src="${data.url || ''}" alt="${data.name || ''}"></div>
+        <div class="img-wrapper"><img src="${data.url || ''}" alt="${data.name || ''}" crossorigin="anonymous"></div>
         <div class="img-info">${data.name || '名称未設定'}</div>
       `;
       poolContainer.appendChild(card);
