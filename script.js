@@ -417,32 +417,28 @@ captureBtn.addEventListener('click', () => {
   // html2canvasを実行
   html2canvas(targetElement, {
     useCORS: true,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff', // 透過によるくすみを防ぐため白背景を指定
     scale: 2,
     scrollY: -window.scrollY,
     windowWidth: document.documentElement.offsetWidth,
-    // 【追加】撮影用のクローンDOMに対して、描画を妨害するスタイルを強制リセットする
     onclone: (clonedDoc) => {
       const clonedWrapper = clonedDoc.getElementById('teams-wrapper');
       if (!clonedWrapper) return;
 
-      const allCards = clonedWrapper.querySelectorAll('.img-card');
-      allCards.forEach(card => {
-        // Sortable.js が残す可能性のあるスタイルを無効化
-        card.style.transform = 'none';
-        card.style.transition = 'none';
-        card.style.opacity = '1';
+      // 【修正】チームエリア内の「すべての要素（画像、枠、テキスト等）」を取得
+      const allElements = clonedWrapper.querySelectorAll('*');
+      
+      allElements.forEach(el => {
+        // 1. Sortable.jsの残像クラスや選択状態を完全に剥がす
+        el.classList.remove('ghost', 'sortable-chosen', 'sortable-drag', 'selected-card');
         
-        // 選択状態やドラッグ中のクラスを剥がす
-        card.classList.remove('selected-card', 'ghost', 'sortable-chosen', 'sortable-drag');
+        // 2. 透過度（opacity）とフィルター（暗転など）を "強制的に(!important)" 100%表示にする
+        el.style.setProperty('opacity', '1', 'important');
+        el.style.setProperty('filter', 'none', 'important');
+        el.style.setProperty('transform', 'none', 'important');
         
-        // 中の画像が確実に表示されるようにスタイルを強制
-        const img = card.querySelector('img');
-        if (img) {
-          img.style.display = 'block';
-          img.style.visibility = 'visible';
-          img.style.opacity = '1';
-        }
+        // もしホバー（:hover）状態で暗くなるCSSがある場合、それも無効化する
+        el.style.setProperty('pointer-events', 'none', 'important');
       });
     }
   }).then(canvas => {
@@ -462,7 +458,6 @@ captureBtn.addEventListener('click', () => {
     downloadLink.click();
     document.body.removeChild(downloadLink);
   }).catch(err => {
-    // エラー時もスタイルを元に戻す
     targetElement.style.overflow = originalOverflow;
     targetElement.style.height = originalHeight;
     console.error("画像化に失敗しました:", err);
