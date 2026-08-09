@@ -404,8 +404,6 @@ async function loadApp() {
 
 const captureBtn = document.getElementById('capture-btn');
 
-const captureBtn = document.getElementById('capture-btn');
-
 captureBtn.addEventListener('click', () => {
   const targetElement = document.getElementById('teams-wrapper');
 
